@@ -2,24 +2,24 @@ from settings.SETTINGSGOLD import *
 
 from parse.ParseCheif import ParseGold, ParseUsd, ParseCrip, ParseSP500
 from parse.dataPygold import Data, DataCrip, DataSP
-#from parse.ParseSP import messagesp              #  ЭТОТ ПАРС ТОРМОЗИТ ВСЕ ОСТАЛЬНЫЕ ( selenium )
+
 
 sitegold = ParseGold(URLGOLD).get_content()
 valuesgold = Data(sitegold)
-#print(valuesgold.get_all_list())   # ВЫВОДИТ ДРАГМЕТАЛЛЫ
+   # ВЫВОДИТ ДРАГМЕТАЛЛЫ
 
 siteusd = ParseUsd(URLGOLD).get_content_usd()
 usdvalue = Data(siteusd)
-#print(siteusd)    # ВЫВОДИТ ДОЛЛАР И ЕВРО
+    # ВЫВОДИТ ДОЛЛАР И ЕВРО
 
 sitebit = ParseCrip(URLBIT).get_content_bit()
 valuescrip = DataCrip(sitebit)
-#print(valuescrip.get_all_list_crip())    # ВЫВОДИТ КРИПТОВАЛЮТЫ
+    # ВЫВОДИТ КРИПТОВАЛЮТЫ
 
 
 sitesp = ParseSP500(URLSP500).get_content_sp()
 valuesp = DataSP(sitesp)
-#print(messagesp)          # ВЫВОДИТ ИНДЕКС SP 500
+         # ВЫВОДИТ ИНДЕКС SP 500
 
 
 
@@ -64,7 +64,7 @@ def get_text_messages(message):
 
 
     elif message.text == BUTTON_CRIPTA:
-        BOT.send_message(message.chat.id, 'Какая информация нужна?', reply_markup = KEYBOARD_CHOICE_CRIPTA)   ###########
+        BOT.send_message(message.chat.id, 'Какая информация нужна?', reply_markup = KEYBOARD_CHOICE_CRIPTA)  
 
     elif message.text == BUTTON_GET_ALL_CRIP:
         BOT.send_message(message.chat.id, valuescrip.get_all_list_crip(), reply_markup = KEYBOARD_CHOICE_CRIPTA)
